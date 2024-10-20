@@ -29,10 +29,6 @@ Project ini bertujuan untuk memberikan solusi yang terstruktur dan skalabel bagi
 ## Instalasi & Pengaturan
 1. Library
    ```bash
-  pip install tabulate
-   
-
-
-
+   pip install tabulate
 
 
