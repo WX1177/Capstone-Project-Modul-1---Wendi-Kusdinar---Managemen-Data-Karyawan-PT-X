@@ -52,8 +52,8 @@ def display_menu():
     print("\t1. Laporan Data Karyawan")
     print("\t2. Mencari Data Karyawan")
     print("\t3. Menambah Data Karyawan")
-    print("\t4. Menghapus Data Karyawan")
-    print("\t5. Merubah Data Karyawan")
+    print("\t4. Merubah Data Karyawan")
+    print("\t5. Menghapus Data Karyawan")
     print("\t6. Keluar Dari Program")
     print()
 
@@ -190,44 +190,7 @@ def add_employee():
     except Exception as e:
         print(f"Terjadi kesalahan saat menambahkan data karyawan: {e}\n")
 
-def delete_employee():
-    try:
-        print("============================================")
-        print("            MENGHAPUS DATA KARYAWAN")
-        print("============================================")
-        while True:
-            print("1. Masukkan NIK Karyawan yang ingin dihapus (Format: X###):")
-            print("2. Tampilkan Laporan Data Karyawan")
-            print("3. Kembali ke Menu Utama")
-            pilihan = input("Masukkan pilihan (1-3): ").strip()
 
-            if pilihan == '1':
-                nik = input("Masukkan NIK Karyawan yang ingin dihapus (Format: X###): ").strip().upper()
-                if not validate_nik(nik):
-                    print("Terjadi kesalahan: Format NIK tidak valid. NIK harus dimulai dengan 'X' diikuti oleh tiga digit angka, contoh: X001.\n")
-                    continue
-                if nik not in employees:
-                    print("Terjadi kesalahan: NIK tidak ditemukan.\n")
-                    continue
-                
-                confirm = input(f"Apakah Anda yakin ingin menghapus data karyawan dengan NIK {nik}? (y/n): ").strip().lower()
-                if confirm == 'y':
-                    del employees[nik]
-                    print("Data karyawan berhasil dihapus.\n")
-                else:
-                    print("Penghapusan dibatalkan.\n")
-                    continue
-                display_employees()
-                
-            elif pilihan == '2':
-                display_employees()
-            elif pilihan == '3':
-                print("Kembali ke Menu Utama.\n")
-                return
-            else:
-                print("Pilihan tidak valid. Silakan coba lagi.\n")
-    except Exception as e:
-        print(f"Terjadi kesalahan saat menghapus data karyawan: {e}\n")
 
 def edit_employee():
     try:
@@ -350,6 +313,45 @@ def edit_employee():
                 print("Pilihan tidak valid. Silakan coba lagi.\n") 
     except Exception as e:
         print(f"Terjadi kesalahan saat mengubah data karyawan: {e}\n")
+        
+def delete_employee():
+    try:
+        print("============================================")
+        print("            MENGHAPUS DATA KARYAWAN")
+        print("============================================")
+        while True:
+            print("1. Masukkan NIK Karyawan yang ingin dihapus (Format: X###):")
+            print("2. Tampilkan Laporan Data Karyawan")
+            print("3. Kembali ke Menu Utama")
+            pilihan = input("Masukkan pilihan (1-3): ").strip()
+
+            if pilihan == '1':
+                nik = input("Masukkan NIK Karyawan yang ingin dihapus (Format: X###): ").strip().upper()
+                if not validate_nik(nik):
+                    print("Terjadi kesalahan: Format NIK tidak valid. NIK harus dimulai dengan 'X' diikuti oleh tiga digit angka, contoh: X001.\n")
+                    continue
+                if nik not in employees:
+                    print("Terjadi kesalahan: NIK tidak ditemukan.\n")
+                    continue
+                
+                confirm = input(f"Apakah Anda yakin ingin menghapus data karyawan dengan NIK {nik}? (y/n): ").strip().lower()
+                if confirm == 'y':
+                    del employees[nik]
+                    print("Data karyawan berhasil dihapus.\n")
+                else:
+                    print("Penghapusan dibatalkan.\n")
+                    continue
+                display_employees()
+                
+            elif pilihan == '2':
+                display_employees()
+            elif pilihan == '3':
+                print("Kembali ke Menu Utama.\n")
+                return
+            else:
+                print("Pilihan tidak valid. Silakan coba lagi.\n")
+    except Exception as e:
+        print(f"Terjadi kesalahan saat menghapus data karyawan: {e}\n")
 
 #Menjalankan program utama
 while True:
@@ -364,9 +366,9 @@ while True:
         elif choice == '3':
             add_employee()
         elif choice == '4':
-            delete_employee()
-        elif choice == '5':
             edit_employee()
+        elif choice == '5':
+            delete_employee()
         elif choice == '6':
             print("Terima kasih! Program sudah selesai.")
             break
