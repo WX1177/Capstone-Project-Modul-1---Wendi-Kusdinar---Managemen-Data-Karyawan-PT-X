@@ -17,9 +17,9 @@ Project ini bertujuan untuk memberikan solusi yang terstruktur dan skalabel bagi
 - 📊 **Laporan Data Karyawan**: Menampilkan seluruh data karyawan dalam format tabel.
 - 🔍 **Mencari Data Karyawan**: Mencari data berdasarkan NIK, nama, posisi, bagian, atau domisili.
 - ➕ **Menambah Data Karyawan**: Menambahkan data karyawan baru dengan validasi NIK.
-- 🗑️ **Menghapus Data Karyawan**: Menghapus data karyawan berdasarkan NIK.
 - ✏️ **Merubah Data Karyawan**: Mengupdate informasi karyawan yang ada.
-
+- 🗑️ **Menghapus Data Karyawan**: Menghapus data karyawan berdasarkan NIK.
+  
 ## Teknologi yang Digunakan
 - **Bahasa Pemrograman**: Python
 - **Penyimpanan Data**: Struktur data dalam memori (list, dictionary)
