@@ -1,6 +1,6 @@
 # Manajemen Data Karyawan PT X
 
-Selamat datang di proyek **Manajemen Data Karyawan PT X**! Proyek ini bertujuan untuk memudahkan pengelolaan data karyawan tanpa menggunakan database eksternal atau SQL. Program ini memanfaatkan Python dan library **Tabulate** untuk menampilkan data dalam format tabel yang rapi.
+Selamat datang di project **Manajemen Data Karyawan PT X**! project ini bertujuan untuk memudahkan pengelolaan data karyawan tanpa menggunakan database eksternal atau SQL. Program ini memanfaatkan Python dan library **Tabulate** untuk menampilkan data dalam format tabel yang rapi.
 
 ## Daftar Isi
 - [Gambaran Project](#gambaran-project)
@@ -9,7 +9,7 @@ Selamat datang di proyek **Manajemen Data Karyawan PT X**! Proyek ini bertujuan 
 - [Instalasi & Pengaturan](#instalasi--pengaturan)
 
 ## Gambaran Project
-Sistem Manajemen Data Karyawan ini adalah proyek berbasis Python yang dirancang untuk mengelola catatan karyawan secara efisien. Sistem ini memungkinkan pengguna untuk membuat, membaca, memperbarui, dan menghapus (CRUD) data karyawan, memastikan pengelolaan informasi karyawan yang penting berjalan lancar.
+Sistem Manajemen Data Karyawan ini adalah project berbasis Python yang dirancang untuk mengelola catatan karyawan secara efisien. Sistem ini memungkinkan pengguna untuk membuat, membaca, memperbarui, dan menghapus (CRUD) data karyawan, memastikan pengelolaan informasi karyawan yang penting berjalan lancar.
 
 Project ini bertujuan untuk memberikan solusi yang terstruktur dan skalabel bagi organisasi yang perlu mengelola catatan karyawan, sambil memastikan kemudahan penggunaan dan fleksibilitas.
 
