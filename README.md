@@ -35,14 +35,17 @@ Project ini bertujuan untuk memberikan solusi yang terstruktur dan skalabel bagi
    python main.py
 
 ## Penggunaan
+
+- **Laporan Karyawan**:
+Pilih untuk menampilkan semua data karyawan atau data karyawan tertentu berdasarkan NIK/ID mereka.
+- **Mencari Karyawan**:
+Pilih untuk mencari data karyawan berdasarkan NIK/ID, Posisi, Bagian, domisili mereka.
 - **Menambah Karyawan**:
 Sistem akan meminta Anda untuk memasukkan detail karyawan seperti nama, ID, departemen, dan posisi.
 Setelah menambah, sistem akan mengonfirmasi bahwa data telah berhasil ditambahkan.
-- **Membaca Karyawan**:
-Pilih untuk menampilkan semua data karyawan atau data karyawan tertentu berdasarkan ID mereka.
-- **Memperbarui Karyawan**:
-Pilih seorang karyawan berdasarkan ID mereka dan berikan data baru untuk diperbarui.
 - **Menghapus Karyawan**:
 Hapus seorang karyawan dengan memasukkan ID mereka.
+- **Merubah/Memperbarui Karyawan**:
+Pilih seorang karyawan berdasarkan ID mereka dan berikan data baru untuk diperbarui.
 
 
