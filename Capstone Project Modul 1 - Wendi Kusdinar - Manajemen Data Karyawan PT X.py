@@ -1,6 +1,5 @@
 from tabulate import tabulate
 
-# Menginisialisasi data karyawan dengan NIK sebagai primary key
 employees = {
     'X001': {
         'Nama': 'Mardiana',
@@ -61,23 +60,18 @@ def display_menu():
 def display_employees():
     if not employees:
         print("Tidak ada data karyawan untuk ditampilkan.\n")
-        return
-    
-    # Menyusun data untuk tabel
+        return    
+
     report_data = [[nik, data['Nama'].title(), data['Posisi'].title(), data['Bagian'].title(), data['Domisili'].title()] for nik, data in employees.items()]
-
-    # Menentukan header tabel
+   
     headers = ["NIK", "NAMA", "POSISI", "BAGIAN", "DOMISILI"]
-
-    # Menentukan panjang border
-    border_length = 67  # Sesuaikan panjang border
-
-    # Menampilkan tabel
-    print("=" * border_length)  # Garis batas atas
-    print(f"{'LAPORAN DATA KARYAWAN':^67}")  # Judul di tengah
-    print("=" * border_length)  # Garis batas bawah
+    
+    border_length = 67  
+    print("=" * border_length)
+    print(f"{'LAPORAN DATA KARYAWAN':^67}")
+    print("=" * border_length)
     print(tabulate(report_data, headers=headers, tablefmt="fancy_grid", stralign="center"))
-    print()  # Baris kosong setelah tabel
+    print()
 
 def search_employee():
     while True:
@@ -90,7 +84,8 @@ def search_employee():
         print("3. Posisi")
         print("4. Bagian")
         print("5. Domisili")
-        print("6. Kembali ke Menu Utama")
+        print("6. Tampilkan Laporan Data Karyawan")
+        print("7. Kembali ke Menu Utama")
         print()
 
         pilihan = input("Masukkan pilihan (1-6): ").strip()
@@ -114,8 +109,10 @@ def search_employee():
             keyword = input("Masukkan Domisili yang ingin dicari: ").strip().lower()
             results = {nik: data for nik, data in employees.items() if keyword in data['Domisili'].lower()}
         elif pilihan == '6':
+             display_employees() 
+        elif pilihan == '7':
             print("Kembali ke Menu Utama.\n")
-            break  # Kembali ke menu utama
+            break
         else:
             print("Pilihan tidak valid. Silakan coba lagi.\n")
             continue
@@ -134,6 +131,7 @@ def add_employee():
     print("============================================")
     print("            MENAMBAH DATA KARYAWAN")
     print("============================================")
+    
     while True:
         print("1. Masukkan NIK Baru (Format: X###):")
         print("2. Kembali ke Menu Utama")
@@ -141,38 +139,43 @@ def add_employee():
 
         if nik == '1':
             nik = input("Masukkan NIK Baru (Format: X###): ").strip().upper()
+            
             if not nik:
                 print("NIK tidak boleh kosong. Silakan coba lagi.")
                 continue
-            if not validate_nik(nik):
+            
+            if not validate_nik(nik):  # Memvalidasi format NIK
                 print("Terjadi kesalahan: Format NIK tidak valid. Harus dimulai dengan 'X' diikuti oleh tiga digit angka (misalnya, X006).\n")
+                continue            
+           
+            if int(nik[1:]) < 1:
+                print("Terjadi kesalahan: NIK tidak boleh kurang dari X001. Silakan gunakan NIK yang valid.\n")
                 continue
+            
             if nik in employees:
                 print("Terjadi kesalahan: NIK sudah ada. Silakan gunakan NIK yang berbeda.\n")
-                continue
-            break
+                continue           
+            nama = get_non_empty_input("Masukkan Nama: ")
+            posisi = get_non_empty_input("Masukkan Posisi: ")
+            bagian = get_non_empty_input("Masukkan Bagian: ")
+            domisili = get_non_empty_input("Masukkan Domisili: ")
+            
+            employees[nik] = {
+                'Nama': nama.title(),
+                'Posisi': posisi.title(),
+                'Bagian': bagian.title(),
+                'Domisili': domisili.title()
+            }
+            print("Data karyawan berhasil ditambahkan.\n")
+            display_employees()
+
         elif nik == '2':
             print("Kembali ke Menu Utama.\n")
-            return  # Kembali ke menu utama
+            return
+        
         else:
             print("Pilihan tidak valid. Silakan coba lagi.\n")
 
-    nama = get_non_empty_input("Masukkan Nama: ")
-    posisi = get_non_empty_input("Masukkan Posisi: ")
-    bagian = get_non_empty_input("Masukkan Bagian: ")
-    domisili = get_non_empty_input("Masukkan Domisili: ")
-
-    employees[nik] = {
-        'Nama': nama.title(),
-        'Posisi': posisi.title(),
-        'Bagian': bagian.title(),
-        'Domisili': domisili.title()
-    }
-    print("Data karyawan berhasil ditambahkan.\n")
-    display_employees()
-
-    # Pilihan untuk kembali ke menu utama
-    input("Tekan Enter untuk kembali ke menu utama...")
 
 def delete_employee():
     print("============================================")
@@ -199,17 +202,14 @@ def delete_employee():
                 print("Data karyawan berhasil dihapus.\n")
             else:
                 print("Penghapusan dibatalkan.\n")
-                continue  # Kembali ke menu delete_employee
+                continue
+            display_employees() 
             
-            display_employees()  # Tampilkan laporan setelah penghapusan
-            input("Tekan Enter untuk kembali ke menu utama...")
-            return  # Kembali ke menu utama
-        
         elif pilihan == '2':
             display_employees()
         elif pilihan == '3':
             print("Kembali ke Menu Utama.\n")
-            return  # Kembali ke menu utama
+            return
         else:
             print("Pilihan tidak valid. Silakan coba lagi.\n")
 
@@ -249,7 +249,7 @@ def edit_employee():
                     print("Nama karyawan berhasil diubah.\n")
                 else:
                     print("Perubahan nama dibatalkan.\n")
-                    continue  # Kembali ke menu edit_employee
+                    continue  
             elif sub_pilihan == '2':
                 posisi_baru = get_non_empty_input("Masukkan Posisi Baru: ")
                 konfirmasi = input(f"Apakah Anda yakin ingin mengubah posisi menjadi '{posisi_baru.title()}'? (y/n): ").strip().lower()
@@ -258,7 +258,7 @@ def edit_employee():
                     print("Posisi karyawan berhasil diubah.\n")
                 else:
                     print("Perubahan posisi dibatalkan.\n")
-                    continue  # Kembali ke menu edit_employee
+                    continue 
             elif sub_pilihan == '3':
                 bagian_baru = get_non_empty_input("Masukkan Bagian Baru: ")
                 konfirmasi = input(f"Apakah Anda yakin ingin mengubah bagian menjadi '{bagian_baru.title()}'? (y/n): ").strip().lower()
@@ -267,7 +267,7 @@ def edit_employee():
                     print("Bagian karyawan berhasil diubah.\n")
                 else:
                     print("Perubahan bagian dibatalkan.\n")
-                    continue  # Kembali ke menu edit_employee
+                    continue  
             elif sub_pilihan == '4':
                 domisili_baru = get_non_empty_input("Masukkan Domisili Baru: ")
                 konfirmasi = input(f"Apakah Anda yakin ingin mengubah domisili menjadi '{domisili_baru.title()}'? (y/n): ").strip().lower()
@@ -276,7 +276,7 @@ def edit_employee():
                     print("Domisili karyawan berhasil diubah.\n")
                 else:
                     print("Perubahan domisili dibatalkan.\n")
-                    continue  # Kembali ke menu edit_employee
+                    continue  
             elif sub_pilihan == '5':
                 nama_baru = get_non_empty_input("Masukkan Nama Baru: ")
                 konfirmasi_nama = input(f"Apakah Anda yakin ingin mengubah nama menjadi '{nama_baru.title()}'? (y/n): ").strip().lower()
@@ -299,31 +299,29 @@ def edit_employee():
                                 print("Semua data karyawan berhasil diubah.\n")
                             else:
                                 print("Perubahan domisili dibatalkan.\n")
-                                continue  # Kembali ke menu edit_employee
+                                continue  
                         else:
                             print("Perubahan bagian dibatalkan.\n")
-                            continue  # Kembali ke menu edit_employee
+                            continue  
                     else:
                         print("Perubahan posisi dibatalkan.\n")
-                        continue  # Kembali ke menu edit_employee
+                        continue  
                 else:
                     print("Perubahan nama dibatalkan.\n")
-                    continue  # Kembali ke menu edit_employee
+                    continue 
             elif sub_pilihan == '6':
                 print("Kembali ke Menu Utama.\n")
-                return  # Kembali ke menu utama
+                return  
             else:
                 print("Pilihan tidak valid.\n")
-                continue  # Kembali ke menu edit_employee
-
-            display_employees()  # Tampilkan laporan setelah perubahan
-            input("Tekan Enter untuk kembali ke menu utama...")
-            return  # Kembali ke menu utama
+                continue  
+            display_employees()
+            
         elif pilihan == '2':
-            display_employees()  # Tampilkan laporan data karyawan
+            display_employees() 
         elif pilihan == '3':
             print("Kembali ke Menu Utama.\n")
-            return  # Kembali ke menu utama
+            return 
         else:
             print("Pilihan tidak valid. Silakan coba lagi.\n")
 
@@ -343,7 +341,8 @@ while True:
     elif choice == '5':
         edit_employee()
     elif choice == '6':
-        print("Terima kasih! Program selesai.")
+        print("Terima kasih! Program sudah selesai.")
         break  # Keluar dari program
     else:
         print("Pilihan tidak valid. Silakan coba lagi.\n")
+
