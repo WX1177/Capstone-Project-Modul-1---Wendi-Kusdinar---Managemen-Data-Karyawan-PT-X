@@ -30,5 +30,19 @@ Project ini bertujuan untuk memberikan solusi yang terstruktur dan skalabel bagi
 1. Library
    ```bash
    pip install tabulate
+2. Jalankan program:
+    ```bash
+   python main.py
+
+## Penggunaan
+- **Menambah Karyawan**:
+Sistem akan meminta Anda untuk memasukkan detail karyawan seperti nama, ID, departemen, dan posisi.
+Setelah menambah, sistem akan mengonfirmasi bahwa data telah berhasil ditambahkan.
+- **Membaca Karyawan**:
+Pilih untuk menampilkan semua data karyawan atau data karyawan tertentu berdasarkan ID mereka.
+- **Memperbarui Karyawan**:
+Pilih seorang karyawan berdasarkan ID mereka dan berikan data baru untuk diperbarui.
+- **Menghapus Karyawan**:
+Hapus seorang karyawan dengan memasukkan ID mereka.
 
 
