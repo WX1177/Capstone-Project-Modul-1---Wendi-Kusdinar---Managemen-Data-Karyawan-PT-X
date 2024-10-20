@@ -349,5 +349,3 @@ while True:
         break  # Keluar dari program
     else:
         print("Pilihan tidak valid. Silakan coba lagi.\n")
-
-#iya tolong berikan pejelasan secara detail maksud dan tujuan dari program tersebut perbaris bro
