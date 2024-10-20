@@ -22,7 +22,7 @@ Project ini bertujuan untuk memberikan solusi yang terstruktur dan skalabel bagi
   
 ## Teknologi yang Digunakan
 - **Bahasa Pemrograman**: Python
-- **Penyimpanan Data**: Struktur data dalam memori (list, dictionary)
+- **Penyimpanan Data**: Struktur data dalam memori (dictionary)
 - **Library**:
   - **Tabulate**: Untuk menampilkan data dalam format tabel
 
