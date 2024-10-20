@@ -327,8 +327,6 @@ def edit_employee():
         else:
             print("Pilihan tidak valid. Silakan coba lagi.\n")
 
-
-
 # Main program
 while True:
     display_menu()
