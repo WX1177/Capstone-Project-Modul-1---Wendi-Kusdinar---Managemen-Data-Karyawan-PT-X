@@ -37,9 +37,9 @@ Project ini bertujuan untuk memberikan solusi yang terstruktur dan skalabel bagi
 ## Penggunaan
 
 - **Laporan Karyawan**:
-Pilih untuk menampilkan semua data karyawan atau data karyawan tertentu berdasarkan NIK/ID mereka.
+Pilih untuk menampilkan semua data karyawan NIK/ID, Posisi, Bagian, Domisili dalam bentuk tabel.
 - **Mencari Karyawan**:
-Pilih untuk mencari data karyawan berdasarkan NIK/ID, Posisi, Bagian, domisili mereka.
+Pilih untuk mencari data karyawan berdasarkan NIK/ID, Posisi, Bagian, Domisili mereka.
 - **Menambah Karyawan**:
 Sistem akan meminta Anda untuk memasukkan detail karyawan seperti nama, ID, departemen, dan posisi.
 Setelah menambah, sistem akan mengonfirmasi bahwa data telah berhasil ditambahkan.
