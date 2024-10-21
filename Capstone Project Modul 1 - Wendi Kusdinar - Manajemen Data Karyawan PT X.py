@@ -3,38 +3,38 @@ from tabulate import tabulate
 employees = {
     'X001': {
         'Nama': 'Mardiana',
-        'Posisi': 'Sales Engineer',
+        'Jabatan': 'Sales Engineer',
         'Bagian': 'Marketing',
         'Domisili': 'Bandung'
     },
     'X002': {
         'Nama': 'Ana Sumardi',
-        'Posisi': 'Manager',
+        'Jabatan': 'Manager',
         'Bagian': 'Marketing',
         'Domisili': 'Garut'
     },
     'X003': {
         'Nama': 'Johan',
-        'Posisi': 'Supervisor',
+        'Jabatan': 'Supervisor',
         'Bagian': 'Keuangan',
         'Domisili': 'Subang'
     },
     'X004': {
         'Nama': 'Ronny Hermawan',
-        'Posisi': 'Manager',
+        'Jabatan': 'Manager',
         'Bagian': 'I T',
         'Domisili': 'Bandung'
     },
     'X005': {
         'Nama': 'Sandi Agustian',
-        'Posisi': 'Supervisor',
+        'Jabatan': 'Supervisor',
         'Bagian': 'Produksi',
         'Domisili': 'Purwakarta'
     }
 }
 
 def validate_nik(nik):
-    """Memvalidasi format NIK."""
+    """Memvalidasi format NIK."""    
     return nik.startswith('X') and nik[1:].isdigit() and len(nik) == 4
 
 def get_non_empty_input(prompt):
@@ -65,9 +65,9 @@ def display_employees():
                 print("Tidak ada data karyawan untuk ditampilkan.\n")
                 return
 
-            report_data = [[nik, data['Nama'].title(), data['Posisi'].title(), data['Bagian'].title(), data['Domisili'].title()] for nik, data in employees.items()]
+            report_data = [[nik, data['Nama'].title(), data['Jabatan'].title(), data['Bagian'].title(), data['Domisili'].title()] for nik, data in employees.items()]
            
-            headers = ["NIK", "NAMA", "POSISI", "BAGIAN", "DOMISILI"]
+            headers = ["NIK", "NAMA", "JABATAN", "BAGIAN", "DOMISILI"]
             
             border_length = 67
             print("=" * border_length)
@@ -89,7 +89,7 @@ def search_employee():
             print("Cari berdasarkan:")
             print("1. NIK")
             print("2. Nama")
-            print("3. Posisi")
+            print("3. Jabatan")
             print("4. Bagian")
             print("5. Domisili")
             print("6. Tampilkan Laporan Data Karyawan")
@@ -108,8 +108,8 @@ def search_employee():
                 keyword = input("Masukkan Nama yang ingin dicari: ").strip().lower()
                 results = {nik: data for nik, data in employees.items() if keyword in data['Nama'].lower()}
             elif pilihan == '3':
-                keyword = input("Masukkan Posisi yang ingin dicari: ").strip().lower()
-                results = {nik: data for nik, data in employees.items() if keyword in data['Posisi'].lower()}
+                keyword = input("Masukkan Jabatan yang ingin dicari: ").strip().lower()
+                results = {nik: data for nik, data in employees.items() if keyword in data['Jabatan'].lower()}
             elif pilihan == '4':
                 keyword = input("Masukkan Bagian yang ingin dicari: ").strip().lower()
                 results = {nik: data for nik, data in employees.items() if keyword in data['Bagian'].lower()}
@@ -128,8 +128,8 @@ def search_employee():
             if pilihan in ['1', '2', '3', '4', '5']:
                 if results:
                     print(f"\nHasil Pencarian ({len(results)} ditemukan):")
-                    report_data = [[nik, data['Nama'].title(), data['Posisi'].title(), data['Bagian'].title(), data['Domisili'].title()] for nik, data in results.items()]
-                    headers = ["NIK", "NAMA", "POSISI", "BAGIAN", "DOMISILI"]
+                    report_data = [[nik, data['Nama'].title(), data['Jabatan'].title(), data['Bagian'].title(), data['Domisili'].title()] for nik, data in results.items()]
+                    headers = ["NIK", "NAMA", "JABATAN", "BAGIAN", "DOMISILI"]
                     print(tabulate(report_data, headers=headers, tablefmt="fancy_grid", stralign="center"))
                     print()
                 else:
@@ -167,14 +167,14 @@ def add_employee():
                 if nik in employees:
                     print("Terjadi kesalahan: NIK sudah ada. Silakan gunakan NIK yang berbeda.\n")
                     continue
-                nama = get_non_empty_input("Masukkan Nama: ")
-                posisi = get_non_empty_input("Masukkan Posisi: ")
+                nama = get_non_empty_input("Masukkan Nama Lengkap: ")
+                posisi = get_non_empty_input("Masukkan Jabatan: ")
                 bagian = get_non_empty_input("Masukkan Bagian: ")
                 domisili = get_non_empty_input("Masukkan Domisili: ")
                 
                 employees[nik] = {
                     'Nama': nama.title(),
-                    'Posisi': posisi.title(),
+                    'Jabatan': posisi.title(),
                     'Bagian': bagian.title(),
                     'Domisili': domisili.title()
                 }
@@ -215,7 +215,7 @@ def edit_employee():
                 data_lama = employees[nik]
                 print("Pilih data yang ingin diubah:")
                 print("1. Nama")
-                print("2. Posisi")
+                print("2. Jabatan")
                 print("3. Bagian")
                 print("4. Domisili")
                 print("5. Semua Data")
@@ -232,11 +232,11 @@ def edit_employee():
                         print("Perubahan nama dibatalkan.\n")
                         continue
                 elif sub_pilihan == '2':
-                    posisi_baru = get_non_empty_input("Masukkan Posisi Baru: ")
-                    konfirmasi = input(f"Apakah Anda yakin ingin mengubah posisi dari '{data_lama['Posisi']}' menjadi '{posisi_baru.title()}'? (y/n): ").strip().lower()
+                    posisi_baru = get_non_empty_input("Masukkan Jabatan Baru: ")
+                    konfirmasi = input(f"Apakah Anda yakin ingin mengubah posisi dari '{data_lama['Jabatan']}' menjadi '{posisi_baru.title()}'? (y/n): ").strip().lower()
                     if konfirmasi == 'y':
-                        employees[nik]['Posisi'] = posisi_baru.title()
-                        print("Posisi karyawan berhasil diubah.\n")
+                        employees[nik]['Jabatan'] = posisi_baru.title()
+                        print("Jabatan karyawan berhasil diubah.\n")
                     else:
                         print("Perubahan posisi dibatalkan.\n")
                         continue 
@@ -262,8 +262,8 @@ def edit_employee():
                     nama_baru = get_non_empty_input("Masukkan Nama Baru: ")
                     konfirmasi_nama = input(f"Apakah Anda yakin ingin mengubah nama dari '{data_lama['Nama']}' menjadi '{nama_baru.title()}'? (y/n): ").strip().lower()
                     if konfirmasi_nama == 'y':
-                        posisi_baru = get_non_empty_input("Masukkan Posisi Baru: ")
-                        konfirmasi_posisi = input(f"Apakah Anda yakin ingin mengubah posisi dari '{data_lama['Posisi']}' menjadi '{posisi_baru.title()}'? (y/n): ").strip().lower()
+                        posisi_baru = get_non_empty_input("Masukkan Jabatan Baru: ")
+                        konfirmasi_posisi = input(f"Apakah Anda yakin ingin mengubah posisi dari '{data_lama['Jabatan']}' menjadi '{posisi_baru.title()}'? (y/n): ").strip().lower()
                         if konfirmasi_posisi == 'y':
                             bagian_baru = get_non_empty_input("Masukkan Bagian Baru: ")
                             konfirmasi_bagian = input(f"Apakah Anda yakin ingin mengubah bagian dari '{data_lama['Bagian']}' menjadi '{bagian_baru.title()}'? (y/n): ").strip().lower()
@@ -273,7 +273,7 @@ def edit_employee():
                                 if konfirmasi_domisili == 'y':
                                     employees[nik] = {
                                         'Nama': nama_baru.title(),
-                                        'Posisi': posisi_baru.title(),
+                                        'Jabatan': posisi_baru.title(),
                                         'Bagian': bagian_baru.title(),
                                         'Domisili': domisili_baru.title()
                                     }
