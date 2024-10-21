@@ -211,10 +211,8 @@ def edit_employee():
                 if nik not in employees:
                     print("Terjadi kesalahan: NIK tidak ditemukan.\n")
                     continue
-
-                # Data lama karyawan
+                    
                 data_lama = employees[nik]
-
                 print("Pilih data yang ingin diubah:")
                 print("1. Nama")
                 print("2. Posisi")
@@ -225,8 +223,7 @@ def edit_employee():
                 sub_pilihan = input("Masukkan pilihan (1-6): ").strip()
 
                 if sub_pilihan == '1':
-                    nama_baru = get_non_empty_input("Masukkan Nama Baru: ")
-                    # Menampilkan nama lama di konfirmasi
+                    nama_baru = get_non_empty_input("Masukkan Nama Baru: ")                    
                     konfirmasi = input(f"Apakah Anda yakin ingin mengubah nama dari '{data_lama['Nama']}' menjadi '{nama_baru.title()}'? (y/n): ").strip().lower()
                     if konfirmasi == 'y':
                         employees[nik]['Nama'] = nama_baru.title()
@@ -236,7 +233,6 @@ def edit_employee():
                         continue
                 elif sub_pilihan == '2':
                     posisi_baru = get_non_empty_input("Masukkan Posisi Baru: ")
-                    # Menampilkan posisi lama di konfirmasi
                     konfirmasi = input(f"Apakah Anda yakin ingin mengubah posisi dari '{data_lama['Posisi']}' menjadi '{posisi_baru.title()}'? (y/n): ").strip().lower()
                     if konfirmasi == 'y':
                         employees[nik]['Posisi'] = posisi_baru.title()
@@ -245,8 +241,7 @@ def edit_employee():
                         print("Perubahan posisi dibatalkan.\n")
                         continue 
                 elif sub_pilihan == '3':
-                    bagian_baru = get_non_empty_input("Masukkan Bagian Baru: ")
-                    # Menampilkan bagian lama di konfirmasi
+                    bagian_baru = get_non_empty_input("Masukkan Bagian Baru: ")                   
                     konfirmasi = input(f"Apakah Anda yakin ingin mengubah bagian dari '{data_lama['Bagian']}' menjadi '{bagian_baru.title()}'? (y/n): ").strip().lower()
                     if konfirmasi == 'y':
                         employees[nik]['Bagian'] = bagian_baru.title()
@@ -255,8 +250,7 @@ def edit_employee():
                         print("Perubahan bagian dibatalkan.\n")
                         continue
                 elif sub_pilihan == '4':
-                    domisili_baru = get_non_empty_input("Masukkan Domisili Baru: ")
-                    # Menampilkan domisili lama di konfirmasi
+                    domisili_baru = get_non_empty_input("Masukkan Domisili Baru: ")                    
                     konfirmasi = input(f"Apakah Anda yakin ingin mengubah domisili dari '{data_lama['Domisili']}' menjadi '{domisili_baru.title()}'? (y/n): ").strip().lower()
                     if konfirmasi == 'y':
                         employees[nik]['Domisili'] = domisili_baru.title()
