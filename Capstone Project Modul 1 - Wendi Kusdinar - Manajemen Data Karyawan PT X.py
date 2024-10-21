@@ -316,8 +316,9 @@ def delete_employee():
         while True:
             print("1. Masukkan NIK Karyawan yang ingin dihapus (Format: X###):")
             print("2. Tampilkan Laporan Data Karyawan")
-            print("3. Kembali ke Menu Utama")
-            pilihan = input("Masukkan pilihan (1-3): ").strip()
+            print("3. Menghapus Semua Data Karyawan")
+            print("4. Kembali ke Menu Utama")
+            pilihan = input("Masukkan pilihan (1-4): ").strip()
 
             if pilihan == '1':
                 nik = input("Masukkan NIK Karyawan yang ingin dihapus (Format: X###): ").strip().upper()
@@ -339,7 +340,17 @@ def delete_employee():
                 
             elif pilihan == '2':
                 display_employees()
+
             elif pilihan == '3':
+                confirm_all = input("Apakah Anda yakin ingin menghapus semua data karyawan? (y/n): ").strip().lower()
+                if confirm_all == 'y':
+                    employees.clear()
+                    print("Semua data karyawan berhasil dihapus.\n")
+                else:
+                    print("Penghapusan semua data dibatalkan.\n")
+                display_employees()
+
+            elif pilihan == '4':
                 print("Kembali ke Menu Utama.\n")
                 return
             else:
@@ -369,4 +380,4 @@ while True:
         else:
             print("Pilihan tidak valid. Silakan coba lagi.\n")
     except Exception as e:
-        print(f"Terjadi kesalahan pada menu utama: {e}. Silakan coba lagi.")
+        print(f"Terjadi kesalahan pada menu utama: {e}. Silakan coba lagi.")v
