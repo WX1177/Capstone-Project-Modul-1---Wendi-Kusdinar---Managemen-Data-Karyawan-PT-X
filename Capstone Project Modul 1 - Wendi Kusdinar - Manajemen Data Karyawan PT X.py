@@ -380,4 +380,4 @@ while True:
         else:
             print("Pilihan tidak valid. Silakan coba lagi.\n")
     except Exception as e:
-        print(f"Terjadi kesalahan pada menu utama: {e}. Silakan coba lagi.")v
+        print(f"Terjadi kesalahan pada menu utama: {e}. Silakan coba lagi.")
